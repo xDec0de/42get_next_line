@@ -6,24 +6,41 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:33:02 by danimart          #+#    #+#             */
-/*   Updated: 2024/01/22 13:48:56 by danimart         ###   ########.fr       */
+/*   Updated: 2024/01/22 14:45:53 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
-
-# pragma once
-
 # define GET_NEXT_LINE_H
-# define FD_SIZE 1024
+
+# include <unistd.h>
+# include <stdlib.h>
+
+# ifndef FD_SIZE
+/** @brief The amount of files GNL will be able to read from. */
+#  define FD_SIZE 1024
+# endif
 
 # ifndef BUFFER_SIZE
+/** @brief The size of the buffer used by GNL each time it reads from a file. */
 #  define BUFFER_SIZE 42
 # endif
 
-# include <unistd.h>
-# include <fcntl.h>
-# include <stdlib.h>
+/* get_next_line.c */
+
+/**
+ * @brief Gets the next line of the file with the specified
+ * file descriptor (fd). This function is capable of reading from
+ * multiple files at the same time while "remembering" what the next line
+ * should be for each file. Note that this function considers a line
+ * any content before a '\\n' character.
+ * 
+ * @param fd the file descriptor to use to read the contents of the file.
+ * 
+ * @return The next line of the file. NULL will be returned if the end
+ * of the document is reached or if any error occurred.
+ */
+char	*get_next_line(int fd);
 
 /* get_next_line_utils.c */
 
@@ -86,21 +103,5 @@ char	*gnl_strjoin(char *s1, char *s2);
  * limited to a maximum length (max). NULL if malloc fails or str is NULL.
  */
 char	*gnl_substr(char *str, int start, int max);
-
-/* get_next_line.c */
-
-/**
- * @brief Gets the next line of the file with the specified
- * file descriptor (fd). This function is capable of reading from
- * multiple files at the same time while "remembering" what the next line
- * should be for each file. Note that this function considers a line
- * any content before a '\\n' character.
- * 
- * @param fd the file descriptor to use to read the contents of the file.
- * 
- * @return The next line of the file. NULL will be returned if the end
- * of the document is reached or if any error occurred.
- */
-char	*get_next_line(int fd);
 
 #endif
