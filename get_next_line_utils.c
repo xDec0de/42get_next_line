@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:32:49 by danimart          #+#    #+#             */
-/*   Updated: 2024/01/22 12:49:15 by danimart         ###   ########.fr       */
+/*   Updated: 2024/01/22 13:33:37 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,24 +88,24 @@ char	*gnl_strjoin(char *s1, char *s2)
 	return (str);
 }
 
-char	*gnl_substr(char *str, int start, int len)
+char	*gnl_substr(char *str, int start, int max)
 {
 	char	*sub;
+	int		len;
 	int		i;
-	int		j;
 
 	if (str == NULL)
 		return (NULL);
 	if (start > gnl_strlen(str))
 		return (gnl_strdup(""));
-	j = gnl_strlen(&str[start]);
-	if (j < len)
-		len = j;
-	sub = (char *) malloc((len + 1) * sizeof(char));
-	if (!sub)
+	len = gnl_strlen(&str[start]);
+	if (len < max)
+		max = len;
+	sub = malloc((max + 1) * sizeof(char));
+	if (sub == NULL)
 		return (NULL);
 	i = 0;
-	while (i < len && str[start])
+	while (i < max)
 	{
 		sub[i] = str[start];
 		start++;

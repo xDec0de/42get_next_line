@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:33:02 by danimart          #+#    #+#             */
-/*   Updated: 2024/01/22 12:48:33 by danimart         ###   ########.fr       */
+/*   Updated: 2024/01/22 13:16:14 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,17 +69,17 @@ char	*gnl_strjoin(char *s1, char *s2);
  * will be a dumplicate of str, starting to copy the contents
  * of it at the specified position (start), so any previous content
  * to the start index is ignored. The maximum length of the substring
- * is also limited by len.
+ * is also limited by max.
  * 
  * @param str the original string that will be used to get
  * a substring from.
  * @param start the starting position of the substring.
- * @param len the maximum length of the substring.
+ * @param max the maximum length of the substring.
  * 
  * @return A substring of str starting at the specified index (start),
- * limited to a maximum length (len). NULL if malloc fails or str is NULL.
+ * limited to a maximum length (max). NULL if malloc fails or str is NULL.
  */
-char	*gnl_substr(char *str, int start, int len);
+char	*gnl_substr(char *str, int start, int max);
 
 /* get_next_line.c */
 
