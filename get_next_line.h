@@ -6,14 +6,20 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:33:02 by danimart          #+#    #+#             */
-/*   Updated: 2024/01/22 13:16:14 by danimart         ###   ########.fr       */
+/*   Updated: 2024/01/22 13:48:56 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 
+# pragma once
+
 # define GET_NEXT_LINE_H
 # define FD_SIZE 1024
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 # include <unistd.h>
 # include <fcntl.h>
