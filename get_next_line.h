@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:33:02 by danimart          #+#    #+#             */
-/*   Updated: 2024/01/22 12:46:05 by danimart         ###   ########.fr       */
+/*   Updated: 2024/01/22 12:48:33 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
  * 
  * @return The length of str. 0 if str is NULL.
  */
-int		ft_strlen(char *str);
+int		gnl_strlen(char *str);
 
 /**
  * @brief Finds a char (ch) on a string (str).
@@ -40,7 +40,7 @@ int		ft_strlen(char *str);
  * in str if found. -1 if ch isn't present on str
  * or if str is NULL.
  */
-int		ft_strchr(char *str, char ch);
+int		gnl_strchr(char *str, char ch);
 
 /**
  * @brief Creates a duplicate of a string (str).
@@ -50,7 +50,7 @@ int		ft_strchr(char *str, char ch);
  * @return The duplicate of the original string. This
  * may be NULL if original was NULL or if malloc failed
  */
-char	*ft_strdup(char *original);
+char	*gnl_strdup(char *original);
 
 /**
  * @brief Joins two strings, or, in other words, appends the
@@ -62,7 +62,7 @@ char	*ft_strdup(char *original);
  * @return s1 with the contents of s2 added to the end of it.
  * NULL malloc fails or if s1 or s2 are NULL.
  */
-char	*ft_strjoin(char *s1, char *s2);
+char	*gnl_strjoin(char *s1, char *s2);
 
 /**
  * @brief Gets a substring from a string (str). This substring
@@ -79,7 +79,7 @@ char	*ft_strjoin(char *s1, char *s2);
  * @return A substring of str starting at the specified index (start),
  * limited to a maximum length (len). NULL if malloc fails or str is NULL.
  */
-char	*ft_substr(char *str, int start, int len);
+char	*gnl_substr(char *str, int start, int len);
 
 /* get_next_line.c */
 
