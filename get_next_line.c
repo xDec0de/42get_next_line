@@ -6,43 +6,43 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:33:02 by danimart          #+#    #+#             */
-/*   Updated: 2024/01/22 12:49:25 by danimart         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:14:13 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*gnl_free(char **files)
+static char	*free_fd(char **files, int fd)
 {
-	if (*files != NULL)
+	if (files[fd] != NULL)
 	{
-		free(*files);
-		*files = NULL;
+		free(files[fd]);
+		files[fd] = NULL;
 	}
 	return (NULL);
 }
 
 static char	*get_line(char **files, int fd)
 {
-	char	*tmp;
+	char	*buff;
 	char	*res;
 	int		i;
 
 	if (!files[fd])
 		return (NULL);
-	tmp = files[fd];
-	i = gnl_strchr(tmp, '\n');
+	buff = files[fd];
+	i = gnl_strchr(files[fd], '\n');
 	if (i == -1)
 	{
-		if (gnl_strlen(tmp) <= 0)
-			return (gnl_free(files + fd));
-		res = gnl_strdup(tmp);
-		gnl_free(&files[fd]);
+		if (gnl_strlen(files[fd]) <= 0)
+			return (free_fd(files, fd));
+		res = gnl_strdup(files[fd]);
+		free_fd(files, fd);
 		return (res);
 	}
-	res = gnl_substr(tmp, 0, i + 1);
-	files[fd] = gnl_substr(tmp, i + 1, (gnl_strlen(tmp) - i));
-	gnl_free(&tmp);
+	res = gnl_substr(buff, 0, i + 1);
+	files[fd] = gnl_substr(buff, i + 1, (gnl_strlen(buff) - i));
+	free(buff);
 	return (res);
 }
 
@@ -63,7 +63,7 @@ char	*get_next_line(int fd)
 		{
 			read_res = read(fd, buf, BUFFER_SIZE);
 			if (read_res == -1)
-				return (gnl_free(files + fd));
+				return (free_fd(files, fd));
 			buf[read_res] = '\0';
 			files[fd] = gnl_strjoin(files[fd], buf);
 		}
