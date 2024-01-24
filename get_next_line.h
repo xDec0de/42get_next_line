@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:33:02 by danimart          #+#    #+#             */
-/*   Updated: 2024/01/22 14:45:53 by danimart         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:19:43 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ char	*gnl_strdup(char *original);
 
 /**
  * @brief Joins two strings, or, in other words, appends the
- * content of s1 to s2.
+ * content of s1 to s2. Note that s1 will be freed after joining
+ * but s2 will NOT be freed.
  * 
  * @param s1 the first string to join.
  * @param s2 the second string to join.
