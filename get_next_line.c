@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:33:02 by danimart          #+#    #+#             */
-/*   Updated: 2024/01/24 15:57:42 by danimart         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:05:54 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ static char	*get_line(char **files, int fd)
 		return (res);
 	}
 	res = gnl_substr(buff, 0, i + 1);
+	if (res == NULL)
+		return (free_fd(files, fd));
 	files[fd] = gnl_substr(buff, i + 1, (gnl_strlen(buff) - i));
 	free(buff);
 	return (res);

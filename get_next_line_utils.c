@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:32:49 by danimart          #+#    #+#             */
-/*   Updated: 2024/01/22 16:48:19 by danimart         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:05:41 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,21 +69,22 @@ char	*gnl_strjoin(char *s1, char *s2)
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
 	str = malloc((gnl_strlen(s1) + gnl_strlen(s2) + 1) * sizeof(char));
-	if (str == NULL)
-		return (NULL);
-	i = 0;
-	j = 0;
-	while (s1[i] != '\0')
+	if (str != NULL)
 	{
-		str[i + j] = s1[i];
-		i++;
+		i = 0;
+		j = 0;
+		while (s1[i] != '\0')
+		{
+			str[i + j] = s1[i];
+			i++;
+		}
+		while (s2[j] != '\0')
+		{
+			str[i + j] = s2[j];
+			j++;
+		}
+		str[i + j] = '\0';
 	}
-	while (s2[j] != '\0')
-	{
-		str[i + j] = s2[j];
-		j++;
-	}
-	str[i + j] = '\0';
 	free(s1);
 	return (str);
 }
