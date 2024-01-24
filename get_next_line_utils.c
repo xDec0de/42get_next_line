@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:32:49 by danimart          #+#    #+#             */
-/*   Updated: 2024/01/22 13:33:37 by danimart         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:48:19 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*gnl_strdup(char *original)
 	if (original == NULL)
 		return (NULL);
 	i = 0;
-	dup = (char *) malloc((gnl_strlen(original) + 1) * sizeof(char));
+	dup = malloc((gnl_strlen(original) + 1) * sizeof(char));
 	if (dup == NULL)
 		return (NULL);
 	while (original[i] != '\0')
@@ -68,7 +68,7 @@ char	*gnl_strjoin(char *s1, char *s2)
 
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
-	str = (char *) malloc((gnl_strlen(s1) + gnl_strlen(s2) + 1) * sizeof(char));
+	str = malloc((gnl_strlen(s1) + gnl_strlen(s2) + 1) * sizeof(char));
 	if (str == NULL)
 		return (NULL);
 	i = 0;
