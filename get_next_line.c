@@ -6,12 +6,21 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:33:02 by danimart          #+#    #+#             */
-/*   Updated: 2024/01/22 16:14:13 by danimart         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:53:19 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+/**
+ * @brief Frees the buffer that corresponds to the specified file descriptor (fd)
+ * currently stored on the static **files variable.
+ * 
+ * @param files the static **files variable used to store buffers by GNL.
+ * @param fd the fd used to get the buffer to free.
+ * 
+ * @return Always NULL.
+ */
 static char	*free_fd(char **files, int fd)
 {
 	if (files[fd] != NULL)
@@ -22,6 +31,17 @@ static char	*free_fd(char **files, int fd)
 	return (NULL);
 }
 
+/**
+ * @brief Gets the next line currently stored on the buffer that corresponds to
+ * the specified file descriptor (fd). This line will be removed from the buffer
+ * to ensure it isn't returned again. If no content is left after the removal,
+ * the buffer corresponding to the file descriptor (fd) will be freed.
+ * 
+ * @param files the static **files variable used to store buffers by GNL.
+ * @param fd the fd used to get the buffer.
+ * 
+ * @return The corresponding stored line, NULL if no content is stored.
+ */
 static char	*get_line(char **files, int fd)
 {
 	char	*buff;
@@ -34,7 +54,7 @@ static char	*get_line(char **files, int fd)
 	i = gnl_strchr(files[fd], '\n');
 	if (i == -1)
 	{
-		if (gnl_strlen(files[fd]) <= 0)
+		if (gnl_strlen(files[fd]) == 0)
 			return (free_fd(files, fd));
 		res = gnl_strdup(files[fd]);
 		free_fd(files, fd);
