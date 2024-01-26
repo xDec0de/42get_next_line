@@ -1,4 +1,4 @@
-# [42] get_next_line
+# 42 - get_next_line
 This is a very simple yet useful project that we will use later on the common core of 42. The goal of this project is to create a `char *get_next_line(int fd)` function that must read and return one line from the specified file descriptor (fd).
 
 One important note is that this an every single C project I made for the 42 cursus is coded, compiled and tested on macOS Catalina (The OS provided at our campus). While the code itself uses standard functions and pure C logic, the project hasn't been tested and may not work on other platforms. This is expected and is not planned to be solved.
