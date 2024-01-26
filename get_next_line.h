@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:33:02 by danimart          #+#    #+#             */
-/*   Updated: 2024/01/22 16:19:43 by danimart         ###   ########.fr       */
+/*   Updated: 2024/01/26 11:58:29 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,44 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-# ifndef FD_SIZE
-/** @brief The amount of files GNL will be able to read from. */
-#  define FD_SIZE 1024
+/* FD_MAX definition and limitations */
+
+/* Include OPEN_MAX */
+# include <sys/syslimits.h>
+
+# ifndef FD_MAX
+/** @brief The maximum file descriptor GNL will be able to read from. */
+#  define FD_MAX OPEN_MAX
 # endif
+
+# if FD_MAX > OPEN_MAX
+#  undef FD_MAX
+#  define FD_MAX OPEN_MAX
+# endif
+
+# if FD_MAX < 1
+#  undef FD_MAX
+#  define FD_MAX OPEN_MAX
+# endif
+
+/* BUFFER_SIZE definition and limitations */
+
+/* Include BUFSIZ */
+# include <stdio.h>
 
 # ifndef BUFFER_SIZE
 /** @brief The size of the buffer used by GNL each time it reads from a file. */
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE BUFSIZ
+# endif
+
+# if BUFFER_SIZE > 1000000
+#  undef BUFFER_SIZE
+#  define BUFFER_SIZE 1000000
+# endif
+
+# if BUFFER_SIZE < 1
+#  undef BUFFER_SIZE
+#  define BUFFER_SIZE 1
 # endif
 
 /* get_next_line.c */

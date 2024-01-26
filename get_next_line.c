@@ -6,7 +6,7 @@
 /*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:33:02 by danimart          #+#    #+#             */
-/*   Updated: 2024/01/24 17:05:54 by danimart         ###   ########.fr       */
+/*   Updated: 2024/01/26 11:30:46 by danimart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ static char	*get_line(char **files, int fd)
 char	*get_next_line(int fd)
 {
 	char		buf[BUFFER_SIZE + 1];
-	static char	*files[FD_SIZE];
+	static char	*files[FD_MAX];
 	int			read_res;
 
-	if (fd < 0 || fd > FD_SIZE || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd > FD_MAX || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (files[fd] == NULL)
 		files[fd] = gnl_strdup("");
