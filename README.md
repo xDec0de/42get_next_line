@@ -26,4 +26,4 @@ Now, the specific instructions for get_next_line:
 The most obvious thing everyone learns by doing this project is the purpose of the `static` keyword as well as the concept of file descriptors and how to read files in C.
 
 ## About the macros
-After some research I found out that there is a limit on how many files a process can open. This is specified on `sys/limits.h` with the `OPEN_MAX` macro, `FD_MAX` is limited and defaults to that value. `BUFFER_SIZE` defaults to `BUFSIZ`, provided by `stdio.h`, but has a minimum value of 1 and a maximum value of 1000000.
+After some research I found out that there is a limit on how many files a process can open. This is specified on `stdio.h` with the `FOPEN_MAX` macro, `FD_MAX` is limited and defaults to that value. `BUFFER_SIZE` defaults to `BUFSIZ`, also provided by `stdio.h`, but has a minimum value of 1 and a maximum value of 1000000. This limit is **required** in order to avoid stack overflows, this is because the maximum stack size is 8MB, so actually 8388608 bytes.
