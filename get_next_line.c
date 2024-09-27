@@ -6,20 +6,20 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 15:35:34 by daniema3          #+#    #+#             */
-/*   Updated: 2024/09/27 15:35:36 by daniema3         ###   ########.fr       */
+/*   Updated: 2024/09/27 15:47:18 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 /**
- * @brief Frees the buffer that corresponds to the specified file descriptor (fd)
- * currently stored on the static **files variable.
+ * @brief Frees the buffer that corresponds to the specified file
+ * descriptor (`fd`) currently stored on the static `**files` variable.
  * 
  * @param files the static **files variable used to store buffers by GNL.
  * @param fd the fd used to get the buffer to free.
  * 
- * @return Always NULL.
+ * @return Always `NULL`.
  */
 static char	*free_fd(char **files, int fd)
 {
@@ -33,14 +33,14 @@ static char	*free_fd(char **files, int fd)
 
 /**
  * @brief Gets the next line currently stored on the buffer that corresponds to
- * the specified file descriptor (fd). This line will be removed from the buffer
- * to ensure it isn't returned again. If no content is left after the removal,
- * the buffer corresponding to the file descriptor (fd) will be freed.
+ * the specified file descriptor (`fd`). This line will be removed from the
+ * buffer to ensure it isn't returned again. If no content is left after the
+ * removal, the buffer corresponding to the file descriptor (`fd`) will be freed.
  * 
- * @param files the static **files variable used to store buffers by GNL.
+ * @param files the static `**files` variable used to store buffers by GNL.
  * @param fd the fd used to get the buffer.
  * 
- * @return The corresponding stored line, NULL if no content is stored.
+ * @return The corresponding stored line, `NULL` if no content is stored.
  */
 static char	*get_line(char **files, int fd)
 {
