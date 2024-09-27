@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danimart <danimart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:33:02 by danimart          #+#    #+#             */
-/*   Updated: 2024/01/26 12:04:53 by danimart         ###   ########.fr       */
+/*   Updated: 2024/09/27 15:30:14 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,27 @@
 /* free & malloc */
 # include <stdlib.h>
 
-/* FD_MAX definition and limitations */
+/* Include BUFSIZ & FOPEN_MAX */
+# include <stdio.h>
 
-/* Include OPEN_MAX */
-# include <sys/syslimits.h>
+/* FD_MAX definition and limitations */
 
 # ifndef FD_MAX
 /** @brief The maximum file descriptor GNL will be able to read from. */
-#  define FD_MAX OPEN_MAX
+#  define FD_MAX FOPEN_MAX
 # endif
 
-# if FD_MAX > OPEN_MAX
+# if FD_MAX > FOPEN_MAX
 #  undef FD_MAX
-#  define FD_MAX OPEN_MAX
+#  define FD_MAX FOPEN_MAX
 # endif
 
 # if FD_MAX < 1
 #  undef FD_MAX
-#  define FD_MAX OPEN_MAX
+#  define FD_MAX FOPEN_MAX
 # endif
 
 /* BUFFER_SIZE definition and limitations */
-
-/* Include BUFSIZ */
-# include <stdio.h>
 
 # ifndef BUFFER_SIZE
 /** @brief The size of the buffer used by GNL each time it reads from a file. */
