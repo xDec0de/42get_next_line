@@ -74,7 +74,7 @@ char	*get_next_line(int fd)
 	static char	*files[FD_MAX];
 	int			read_res;
 
-	if (fd < 0 || fd > FD_MAX || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd > FD_MAX)
 		return (NULL);
 	if (files[fd] == NULL)
 		files[fd] = gnl_strdup("");
