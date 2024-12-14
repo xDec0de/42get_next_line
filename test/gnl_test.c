@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 15:25:26 by daniema3          #+#    #+#             */
-/*   Updated: 2024/12/14 19:19:32 by daniema3         ###   ########.fr       */
+/*   Updated: 2024/12/14 19:33:19 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #define RED		"\x1b[31m"
 #define GREEN	"\x1b[32m"
 #define RESET	"\x1b[0m"
+#define YELLOW	"\x1b[33m"
 
 unsigned int	get_digits(long nb)
 {
@@ -80,20 +81,26 @@ int	main(void)
 	char	*file_path;
 	int		test;
 	int		code;
+	int		errors;
 
 	test = 1;
-	while (test < 2)
+	errors = 0;
+	while (1)
 	{
 		file_path = calloc(6 + get_digits(test), sizeof(char));
 		sprintf(file_path, "test/%d", test);
 		code = gnl_test(file_path);
+		if (code == -1)
+			break ;
 		if (code == 0)
 			printf(GREEN "Test %d: OK :D" RESET "\n", test);
-		else if (code == -1)
-			printf(RED "Test %d: Couldn't open file" RESET "\n", test);
 		else
+		{
 			printf(RED "Test %d: "RED"KO :(" RESET "\n", test);
+			errors++;
+		}
 		free(file_path);
 		test++;
 	}
+	printf(YELLOW "Done! found a total of %d error(s)\n", errors);
 }
