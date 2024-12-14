@@ -69,14 +69,14 @@ bytes.
 
 A test folder is included with some test files. In order to test get_next_line
 you can compile in two ways:
-- gcc <flags> \*.c test/\*.c - For the regular version.
-- gcc <flags> malloc_ver/\*.c test/\*.c - For the malloc buffer version.
+- `gcc <flags> \*.c test/\*.c` - For the regular version.
+- `gcc <flags> malloc_ver/\*.c test/\*.c` - For the malloc buffer version.
 
 Keep in mind that due to project requirements the program compiles and was
 tested with the `-Wall -Werror -Wextra` flags.
 
-In order to add new tests, just create a new file under the test folder that
-follows the numeric order, so if the last test file is 42, create file 43.
+In order to add new tests, just create a new file in the `test/files` folder
+that follows the numeric order, so if the last test file is 42, create file 43.
 The tester will automatically recognize that file and compare how get_next_line
 works against the `fgets` function provided by `stdio.h`.
 

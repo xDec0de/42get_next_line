@@ -88,7 +88,7 @@ int	main(void)
 	while (1)
 	{
 		file_path = calloc(6 + get_digits(test), sizeof(char));
-		sprintf(file_path, "test/%d", test);
+		sprintf(file_path, "test/files/%d", test);
 		code = gnl_test(file_path);
 		if (code == -1)
 			break ;
