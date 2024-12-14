@@ -54,12 +54,6 @@ on malloc, to me, offers little real advantage over possible real problems.
 At the end of the day, the program that grades get_next_line won't check if
 you redefine the BUFFER_SIZE macro, so it's really a matter of choice.
 
-## What I learned
-
-The most obvious thing everyone learns by doing this project is the purpose of
-the `static` keyword as well as the concept of file descriptors and how to
-read files in C.
-
 ## About the macros
 
 After some research I found out that there is a limit on how many files a
@@ -70,3 +64,30 @@ malloc_ver folder doesn't contain limits for this macro, while the one at the
 root of the project does, this second limit is **required** in order to avoid
 stack overflows, because the maximum stack size is 8MB, so actually 8388608
 bytes.
+
+# Tests
+
+A test folder is included with some test files. In order to test get_next_line
+you can compile in two ways:
+- gcc <flags> \*.c test/\*.c - For the regular version.
+- gcc <flags> malloc_ver/\*.c test/\*.c - For the malloc buffer version.
+
+Keep in mind that due to project requirements the program compiles and was
+tested with the `-Wall -Werror -Wextra` flags.
+
+In order to add new tests, just create a new file under the test folder that
+follows the numeric order, so if the last test file is 42, create file 43.
+The tester will automatically recognize that file and compare how get_next_line
+works against the `fgets` function provided by `stdio.h`.
+
+In theory, this tester should work with any get_next_line project as long as
+it is copied on its own folder, as it attempts to include `../get_next_line.h`.
+You can of course change that line. This tester however is NOT prepared for
+evaluation and just contains a BASIC way to test if the program works.
+
+## What I learned
+
+The most obvious thing everyone learns by doing this project is the purpose of
+the `static` keyword as well as the concept of file descriptors and how to
+read files in C.
+
