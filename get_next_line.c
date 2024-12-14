@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 15:35:34 by daniema3          #+#    #+#             */
-/*   Updated: 2024/09/27 15:47:18 by daniema3         ###   ########.fr       */
+/*   Updated: 2024/12/14 20:04:55 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static char	*get_line(char **files, int fd)
 	char	*res;
 	int		i;
 
-	if (!files[fd])
+	if (files[fd] == NULL)
 		return (NULL);
 	buff = files[fd];
 	i = gnl_strchr(files[fd], '\n');
@@ -78,21 +78,17 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (files[fd] == NULL)
 		files[fd] = gnl_strdup("");
-	read_res = 1;
-	while (read_res > 0)
+	while (gnl_strchr(files[fd], '\n') == -1)
 	{
-		if (gnl_strchr(files[fd], '\n') == -1)
-		{
-			read_res = read(fd, buf, BUFFER_SIZE);
-			if (read_res == -1)
-				return (free_fd(files, fd));
-			buf[read_res] = '\0';
-			files[fd] = gnl_strjoin(files[fd], buf);
-			if (files[fd] == NULL)
-				return (free_fd(files, fd));
-		}
-		else
-			return (get_line(files, fd));
+		read_res = read(fd, buf, BUFFER_SIZE);
+		if (read_res == 0)
+			break ;
+		if (read_res == -1)
+			return (free_fd(files, fd));
+		buf[read_res] = '\0';
+		files[fd] = gnl_strjoin(files[fd], buf);
+		if (files[fd] == NULL)
+			return (free_fd(files, fd));
 	}
 	return (get_line(files, fd));
 }
