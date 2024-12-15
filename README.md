@@ -1,4 +1,4 @@
-# 42 - get_next_line - Grade: 125/125
+# 42 - get_next_line
 
 This is a very simple yet useful project that we will use later on the
 common core of 42. The goal of this project is to create a
@@ -9,6 +9,8 @@ One important note is that this project is coded, compiled and tested on
 Linux and WSL, Ubuntu on both. While the code itself uses standard functions
 and pure C, the project hasn't been tested and may not work on other platforms.
 This is expected and is not planned to be solved.
+
+Project grade: 125/125
 
 <div align=center>
 <a href="https://www.codefactor.io/repository/github/xdec0de/42get_next_line"><img src="https://www.codefactor.io/repository/github/xdec0de/42get_next_line/badge" alt="CodeFactor"/></a>
@@ -93,4 +95,3 @@ evaluation and just contains a BASIC way to test if the program works.
 The most obvious thing everyone learns by doing this project is the purpose of
 the `static` keyword as well as the concept of file descriptors and how to
 read files in C.
-
