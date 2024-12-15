@@ -18,27 +18,29 @@ This is expected and is not planned to be solved.
 ## Project instructions
 
 First, let's see the general instructions that apply to get_next_line:
--   The function must never crash nor have undefined behavior.
--   The only functions allowed to use are `read`, `malloc` and `free`.
--   The code must be written following
+
+- The function must never crash nor have undefined behavior.
+- The only functions allowed to use are `read`, `malloc` and `free`.
+- The code must be written following
 [norminette](https://github.com/42School/norminette) requirements.
--   Memory leaks are an issue, so no leaks are allowed.
+- Memory leaks are an issue, so no leaks are allowed.
 
 Now, the specific instructions for get_next_line:
--   We can only create the following files: get_next_line.(c/h) and
+
+- We can only create the following files: get_next_line.(c/h) and
 get_next_line_utils.c
--   Under normal circumstances, get_next_line must return the next
+- Under normal circumstances, get_next_line must return the next
 line written on the file corresponding to the
--   `NULL` must be returned if get_next_line fails or reaches the
+- `NULL` must be returned if get_next_line fails or reaches the
 end of a file.
--   Global variables are forbidden.
--   The use of [libft](https://github.com/xDec0de/42libft) is forbidden.
+- Global variables are forbidden.
+- The use of [libft](https://github.com/xDec0de/42libft) is forbidden.
 This limits the amount of utility functions we can use, as we are asked
 to provide only two .c files and
 [norminette](https://github.com/42School/norminette) only allows 5 functions
 per file with a maximum of 25 lines of code for each function.
 
-# About malloc_ver
+## About malloc_ver
 
 As explained bellow on "about the macros", a malloc buffer version is
 included to avoid redefining the BUFFER_SIZE macro. This has its pros and
@@ -65,10 +67,11 @@ root of the project does, this second limit is **required** in order to avoid
 stack overflows, because the maximum stack size is 8MB, so actually 8388608
 bytes.
 
-# Tests
+## Tests
 
 A test folder is included with some test files. In order to test get_next_line
 you can compile in two ways:
+
 - `gcc <flags> \*.c test/\*.c` - For the regular version.
 - `gcc <flags> malloc_ver/\*.c test/\*.c` - For the malloc buffer version.
 
